@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "dist/index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "outputs": ["dist"],
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "framework": "vite"
+}
