@@ -1,0 +1,431 @@
+{
+  "report": {
+    "meta": {
+      "titulo": "THE GODFATHER — THE CORLEONE ARCHIVE V2.0",
+      "tipo": "Reporte Creativo Exhaustivo",
+      "fecha": "2026-10-30T11:53:03.710-05:00",
+      "version_analizada": "2.0.0",
+      "institucion": "SENA — Técnico en Programación de Software (Código 233104)",
+      "archivos_analizados": [
+        "index.html",
+        "public/assets/css/main.css",
+        "src/main.ts",
+        "src/game/types.ts",
+        "src/game/core.ts",
+        "src/game/scenarios.ts",
+        "src/game/storage.ts",
+        "src/game/index.ts",
+        "tests/game.test.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "docs/game-design/GAME_DESIGN_DOCUMENT.md",
+        "docs/V2_IMPLEMENTATION_PLAN.md",
+        "README.md"
+      ],
+      "metodologia": "Análisis estático del código fuente real: HTML, CSS, TypeScript, configuración de build y documentación. Sin ejecución de runtime. Sin invención de datos."
+    },
+
+    "apartado_1_vision_general": {
+      "titulo": "Visión General del Proyecto",
+      "descripcion_ejecutiva": "THE GODFATHER — THE CORLEONE ARCHIVE V2.0 es un archivo cinematográfico digital interactivo con temática de la película de Francis Ford Coppola (1972). El proyecto combina contenido editorial sobre la película, galería de personajes con modales Bootstrap y un videojuego de decisiones narrativas ('El Consejo de la Familia') con motor puro en TypeScript. Está construido sobre Bootstrap 5.3.3, Vite 5.4.10 y TypeScript 5.6.2 con modo strict. Es un proyecto académico SENA (Evidence 21 — Código 233104).",
+      "estado_de_completitud": "PARCIALMENTE COMPLETO",
+      "componentes_implementados": [
+        "Motor de juego puro (src/game/): 6 escenarios, 3 decisiones cada uno, 5 finales, sistema de puntuación ponderada, persistencia localStorage",
+        "Estructura HTML base con navbar Bootstrap, sección hero, sección película, sección personajes (vacía, renderizada por JS), sección juego funcional y footer",
+        "CSS completo de identidad visual: paleta de 6 colores, variables CSS, tipografía dual, grain cinematográfico, responsive básico, prefers-reduced-motion",
+        "Suite de pruebas unitarias con Vitest: 14 grupos de tests cubriendo toda la lógica pura",
+        "Documentación técnica: GAME_DESIGN_DOCUMENT.md (21.851 bytes), V2_IMPLEMENTATION_PLAN.md, README.md"
+      ],
+      "componentes_faltantes": [
+        "Secciones #archive (Archivo Narrativo), #legacy (Legado) y #community (Comunidad) — presentes en la navbar pero ausentes en el HTML",
+        "Imágenes locales — public/assets/images/ vacío, src/assets/images/ vacío; la imagen hero usa URL de Unsplash externa",
+        "Favicon — se referencia /assets/images/favicon.svg pero el directorio está vacío",
+        "Implementación de Supabase para la sección Comunidad — dependencias declaradas pero sin código de integración en src/",
+        "Reproductor musical ambiental mencionado en el plan de implementación pero no implementado",
+        "Contenido real del character-grid — el HTML tiene el div vacío #character-grid con comentario 'se renderizan con JavaScript' pero ese JavaScript no está implementado"
+      ],
+      "stack_tecnologico_real": {
+        "framework_css": "Bootstrap 5.3.3 (CDN, no instalación local)",
+        "bundler": "Vite 5.4.10",
+        "lenguaje": "TypeScript 5.6.2 (strict mode)",
+        "testing": "Vitest 2.1.6",
+        "persistencia": "localStorage nativo",
+        "fuentes": "Google Fonts — Cormorant Garamond + Inter (carga asíncrona con onload trick)",
+        "iconos": "Bootstrap Icons 1.11.3 (CDN)",
+        "supabase": "Declarado en package.json como dependency (2.41.0) pero sin implementación visible en src/"
+      }
+    },
+
+    "apartado_2_fortalezas": {
+      "titulo": "Fortalezas del Proyecto",
+      "puntuacion": 7.5,
+      "items": [
+        {
+          "categoria": "Arquitectura del motor de juego",
+          "descripcion": "El motor de juego (src/game/) está diseñado con separación total de responsabilidades: lógica pura en core.ts, datos en scenarios.ts, persistencia en storage.ts, tipado en types.ts y barrel en index.ts. Las funciones son puras (sin efectos secundarios), lo cual es arquitectónicamente sólido y permite testing sin DOM.",
+          "evidencia_en_codigo": "core.ts: todas las funciones exportadas (clampIndicator, computeScore, determineEnding, applyDecision, buildFinalResult) son funciones puras que reciben datos y devuelven datos. storage.ts usa globalThis para acceder a localStorage sin acoplamiento directo al DOM."
+        },
+        {
+          "categoria": "Suite de pruebas unitarias robusta",
+          "descripcion": "El archivo tests/game.test.ts (14.063 bytes) cubre todos los casos críticos del motor: clampIndicator con valores extremos, computeScore con fórmula verificada manualmente, determineEnding para los 5 finales y fallbacks, applyDecision con clamping, integraciones de partida completa con estrategia equilibrada (→ legacy), maximizadora de poder (→ fallen) y mínimos totales.",
+          "evidencia_en_codigo": "Test manual de computeScore: '80*0.4 + 60*0.3 + 70*0.3 = 32 + 18 + 21 = 71' — el comentario en el test verifica la lógica matemática explícitamente. Test 'a balanced strategy leads to legacy' recorre los 6 escenarios con decisiones 'c' y verifica el ending esperado."
+        },
+        {
+          "categoria": "Sistema de diseño CSS coherente y completo",
+          "descripcion": "El CSS (11.291 bytes) define un sistema de diseño completo con variables CSS custom properties bien nombradas, paleta de 6 colores con derivados semánticos, escala de espaciado (xs/sm/md/lg/xl/xxl), escala de bordes radiales y transiciones definidas como constantes. La paleta editorial (marfil, negro tinta, borgoña, dorado) es coherente con la temática cinematográfica.",
+          "evidencia_en_codigo": "Variables CSS: --color-marfil: #F1EBDD, --color-negro-tinta: #171513, --color-borgoña: #4B121B, --color-dorado: #A47A48. Variables de espaciado: --space-xs a --space-xxl. Variables de transición: --transition-fast: 150ms ease, --transition-normal: 300ms ease."
+        },
+        {
+          "categoria": "Tipografía editorial de alta calidad",
+          "descripcion": "La combinación Cormorant Garamond (display, serif) + Inter (body, sans-serif) es una elección tipográfica sofisticada y apropiada para un archivo cinematográfico editorial. La carga de fuentes usa el patrón de preload asíncrono con fallback noscript, lo que evita bloqueo de render.",
+          "evidencia_en_codigo": "index.html: <link rel='preload' href='https://fonts.googleapis.com/...' as='style' onload='this.onload=null;this.rel=\\'stylesheet\\''>. CSS: --font-display: 'Cormorant Garamond', 'Playfair Display', serif; --font-body: 'Inter', 'Source Sans Pro', sans-serif;"
+        },
+        {
+          "categoria": "Mecánica de juego bien diseñada y documentada",
+          "descripcion": "El sistema de 3 indicadores × 5 finales con 729 trayectorias posibles (3^6) está documentado en un GAME_DESIGN_DOCUMENT.md de 16 secciones y 21.851 bytes. Los deltas de los 18 escenarios son razonables y producen resultados verificables matemáticamente. Los 5 finales tienen nombres narrativos coherentes con la temática.",
+          "evidencia_en_codigo": "scenarios.ts: deltas verificados — d5c (negociar tregua): { power: 14, loyalty: 6, reputation: 12 } — la opción diplomática mejora los tres indicadores, coherente con la narrativa. El test 'a balanced strategy leads to legacy' confirma que la ruta de decisiones 'c' en todos los escenarios produce ending 'legacy'."
+        },
+        {
+          "categoria": "Metadatos HTML y SEO básico",
+          "descripcion": "El HTML incluye lang='es', charset UTF-8, viewport completo, meta description, keywords, author, Open Graph básico (og:title, og:description, og:type), theme-color para navegadores móviles y msapplication-TileColor.",
+          "evidencia_en_codigo": "index.html líneas 3-18: todas las etiquetas meta mencionadas presentes y con valores correctos."
+        },
+        {
+          "categoria": "TypeScript con modo strict habilitado",
+          "descripcion": "tsconfig.json tiene strict: true activado, lo que habilita noImplicitAny, strictNullChecks, strictFunctionTypes y más. Esto garantiza mayor seguridad de tipos en el código del motor.",
+          "evidencia_en_codigo": "tsconfig.json: \"strict\": true, \"noImplicitReturns\": true, \"noFallthroughCasesInSwitch\": true."
+        }
+      ]
+    },
+
+    "apartado_3_oportunidades": {
+      "titulo": "Oportunidades de Mejora",
+      "puntuacion_potencial_si_se_corrigen": 9.0,
+      "bugs_criticos": [
+        {
+          "severidad": "ALTA",
+          "archivo": "src/main.ts",
+          "linea_aproximada": "finishGame(), condición del if",
+          "descripcion": "La condición para guardar el mejor score es `if (!save || result.ending === 'legacy')`. Esto significa que solo se guarda: (a) si no hay save previo, o (b) si el ending es exactamente 'legacy'. Si el jugador completa el juego con un score de 85 en ending 'fallen' tras tener un save anterior con score 30 en ending 'broken', el nuevo score NUNCA se guarda porque la condición falla. El best score queda desactualizado de forma permanente.",
+          "impacto": "La persistencia de best score está rota para todos los endings que no sean 'legacy'.",
+          "corrección_sugerida": "Cambiar la condición a: if (!save || result.score > (save.bestScore || 0))"
+        },
+        {
+          "severidad": "MEDIA",
+          "archivo": "src/main.ts y src/game/types.ts",
+          "linea_aproximada": "Ambos archivos, interfaces GameState",
+          "descripcion": "La interfaz GameState está definida dos veces con estructuras completamente diferentes: types.ts define la versión canónica del motor (con saveId, player, finished, finishedAt, metadata) mientras que main.ts define su propia versión simplificada (con version, startedAt, lastScenario, ending, completedGames, bestScore). El estado que realmente se guarda en localStorage corresponde a la versión de main.ts, no a la del motor.",
+          "impacto": "Inconsistencia de tipos que puede llevar a errores de runtime al deserializar, y el motor no puede reanudar una partida correctamente porque su GameState esperada no coincide con lo que hay en localStorage.",
+          "corrección_sugerida": "Unificar GameState en types.ts y hacer que main.ts importe ese tipo en vez de redefinirlo."
+        },
+        {
+          "severidad": "BAJA",
+          "archivo": "src/game/core.ts",
+          "linea_aproximada": "función clampIndicator()",
+          "descripcion": "El parámetro `indicator` acepta `IndicatorState | string` pero la variable derivada `key` (definida como `typeof indicator === 'string' ? indicator : Object.keys(indicator)[0]`) se declara pero nunca se usa en el cuerpo de la función. El parámetro está únicamente documentado como 'for error context' pero no se usa en ningún mensaje de error.",
+          "impacto": "Código muerto y firma de función confusa. noUnusedLocals está desactivado en tsconfig.json, por lo que TypeScript no lo reporta.",
+          "corrección_sugerida": "Simplificar la firma a clampIndicator(value: number): number o usar el parámetro en un mensaje de error contextual."
+        },
+        {
+          "severidad": "BAJA",
+          "archivo": "src/main.ts",
+          "linea_aproximada": "bloque BOOT, línea final",
+          "descripcion": "(window as any).Game = Game expone el namespace completo del motor de juego como variable global en el objeto window. Esto rompe el encapsulamiento, expone la API interna del motor a consola de desarrollador y potencialmente a scripts de terceros.",
+          "impacto": "Riesgo de seguridad menor en producción. Anti-patrón de arquitectura.",
+          "corrección_sugerida": "Eliminar la línea o limitarla solo a builds de desarrollo con import.meta.env.DEV."
+        },
+        {
+          "severidad": "BAJA",
+          "archivo": "tests/game.test.ts",
+          "linea_aproximada": "test 'runs a full game from scenario 1 to the ending', loop interno",
+          "descripcion": "El bucle `for (let idx = 0; idx < SCENARIO_COUNT; idx++)` accede a `ALL_SCENARIOS[idx + 1]` al final de cada iteración sin protección de índice. En la última iteración (idx = 5), asigna `ALL_SCENARIOS[6]` que es `undefined`. El test pasa solo porque en ese punto el loop ya terminó y `currentScenario` ya no se usa — comportamiento correcto por coincidencia, no por diseño.",
+          "impacto": "El test es frágil. Si se agrega lógica post-loop que use currentScenario, fallará con TypeError silencioso.",
+          "corrección_sugerida": "Agregar guardado: currentScenario = ALL_SCENARIOS[idx + 1] ?? currentScenario o reestructurar el loop para no acceder a índice fuera de rango."
+        }
+      ],
+      "deuda_tecnica": [
+        {
+          "categoria": "Dependencias mal clasificadas",
+          "descripcion": "supabase (2.15.8) y @supabase/supabase-js (2.41.0) están declaradas en 'dependencies' (producción) pero no hay código Supabase en src/. Esto incrementa el tamaño del bundle de producción innecesariamente.",
+          "evidencia": "package.json dependencies: 'supabase': '2.15.8', '@supabase/supabase-js': '2.41.0'. Búsqueda en src/: sin archivos que importen de @supabase/supabase-js.",
+          "corrección_sugerida": "Mover a devDependencies o implementar la integración pendiente."
+        },
+        {
+          "categoria": "jsx: react-jsx innecesario",
+          "descripcion": "tsconfig.json tiene \"jsx\": \"react-jsx\" configurado pero el proyecto no usa React ni JSX en ningún archivo. Esta opción no causa errores (Vite la ignora para archivos .ts) pero es confusa y podría causar problemas si se añaden archivos .tsx que no esperan React.",
+          "evidencia": "tsconfig.json: \"jsx\": \"react-jsx\". Sin ningún import de React ni archivos .tsx en el proyecto.",
+          "corrección_sugerida": "Eliminar la propiedad jsx del tsconfig o cambiarla a \"preserve\" si se planea usar JSX en el futuro."
+        },
+        {
+          "categoria": "Imagen hero de origen externo",
+          "descripcion": "La imagen del hero carga desde https://images.unsplash.com/photo-1519389950473-47fb026b31c0?w=800&q=80. Esto crea dependencia de red externa, posibles problemas de CORS, velocidad de carga variable y riesgo de que la imagen deje de estar disponible.",
+          "evidencia": "index.html: <img src='https://images.unsplash.com/...' alt='Cine clásico' class='hero-image'>",
+          "corrección_sugerida": "Descargar la imagen y servirla desde public/assets/images/ como recurso local."
+        },
+        {
+          "categoria": "Favicon referenciado pero ausente",
+          "descripcion": "El HTML referencia /assets/images/favicon.svg pero el directorio public/assets/images/ está completamente vacío. El navegador mostrará un error 404 al intentar cargar el favicon.",
+          "evidencia": "index.html: <link rel='icon' type='image/svg+xml' href='/assets/images/favicon.svg'>. Directory listing: public/assets/images/ — vacío.",
+          "corrección_sugerida": "Crear el favicon SVG en public/assets/images/favicon.svg o usar un emoji de favicon SVG inline."
+        },
+        {
+          "categoria": "Secciones de contenido ausentes",
+          "descripcion": "La navbar enlaza a #archive, #legacy y #community, pero estas secciones no existen en el HTML. Los clicks en esos enlaces no producen ninguna acción visible de navegación.",
+          "evidencia": "index.html navbar: href='#archive', href='#legacy', href='#community'. Búsqueda de id='archive', id='legacy', id='community' en index.html: no encontrados.",
+          "corrección_sugerida": "Implementar las secciones o eliminar los enlaces de la navbar hasta que estén listas."
+        },
+        {
+          "categoria": "character-grid vacío sin implementación JavaScript",
+          "descripcion": "El div #character-grid tiene el comentario 'Las tarjetas de personajes se renderizan con JavaScript' pero main.ts no contiene lógica de renderizado de personajes. La sección aparecerá vacía en el navegador.",
+          "evidencia": "index.html: <div class='row g-4' id='character-grid'><!-- Las tarjetas... --></div>. main.ts: sin ninguna referencia a 'character-grid', 'characters' ni datos de personajes.",
+          "corrección_sugerida": "Implementar los datos de personajes y la función de renderizado, o usar HTML estático con las tarjetas hardcodeadas."
+        }
+      ]
+    },
+
+    "apartado_4_consistencia_identidad": {
+      "titulo": "Consistencia de Identidad Visual",
+      "puntuacion": 7.8,
+      "section_4": {
+        "paleta_cromatica": {
+          "evaluacion": "EXCELENTE",
+          "descripcion": "La paleta de 6 colores (Marfil #F1EBDD, Negro Tinta #171513, Borgoña #4B121B, Dorado #A47A48, Gris Piedra #79736B, Blanco Cálido #FAF8F2) es coherente, sofisticada y temáticamente apropiada para una película de época ambientada en los años 40-60. El negro tinta como fondo dominante evoca la oscuridad cinematográfica de Gordon Willis ('El Príncipe de las Tinieblas'). El dorado como acento es un guiño a la opulencia familiar Corleone.",
+          "consistencia": "Alta — todas las variables CSS están definidas en :root y usadas consistentemente en todo el CSS. No hay colores hardcodeados fuera del :root excepto los valores de indicadores del juego (#FFD700, #5DADE2) que son colores funcionales de UI.",
+          "problema_menor": "Los colores de los indicadores del juego (#FFD700 para poder, #5DADE2 para lealtad) no están declarados como variables CSS custom properties, lo que rompe mínimamente el sistema de diseño."
+        },
+        "tipografia": {
+          "evaluacion": "MUY BUENA",
+          "descripcion": "Cormorant Garamond para títulos y elementos editoriales, Inter para texto corrido. La combinación serif/sans-serif es una elección editorial clásica. Cormorant Garamond tiene raíces históricas en la tipografía garamond del siglo XVI, lo que refuerza la sensación de archivo histórico.",
+          "uso_en_codigo": "font-family: var(--font-display) aplicado a: .navbar-brand, .hero-title, .section-tagline, .section-title, .card-title, .game-panel-title. font-family: var(--font-body) como default del body.",
+          "problema": "Las fuentes se cargan desde Google Fonts (CDN externo). Sin conexión a internet, el proyecto degradará a las fuentes de fallback ('Playfair Display', serif / 'Source Sans Pro', sans-serif) que no están disponibles localmente, cambiando la identidad tipográfica."
+        },
+        "grain_cinematografico": {
+          "evaluacion": "ORIGINAL Y EFECTIVO",
+          "descripcion": "El efecto de textura cinematográfica se implementa mediante un SVG inline en CSS usando body::before con trazos geométricos de baja opacidad (0.03-0.05). Técnica eficiente que no requiere imágenes externas adicionales.",
+          "evidencia": "CSS body::before: background-image: url(\"data:image/svg+xml,%3Csvg...\"). El SVG contiene path elements con stroke-opacity entre 0.03 y 0.05."
+        },
+        "navbar_glassmorphism": {
+          "evaluacion": "BIEN IMPLEMENTADO",
+          "descripcion": "La navbar usa backdrop-filter: blur(12px) con fondo rgba(23, 21, 19, 0.92) para efecto glassmorphism. El underline animado en nav-links con transform translateX(-50%) y width 0 → 60% en hover es una solución elegante.",
+          "problema_menor": "El efecto hover del underline usa width: 0 → 60% con transition, pero no considera el caso donde el usuario usa prefers-reduced-motion — aunque la media query @media (prefers-reduced-motion: reduce) está implementada al final del CSS y sobreescribe todas las transiciones, incluyendo esta."
+        },
+        "coherencia_seccion_juego": {
+          "evaluacion": "BUENA",
+          "descripcion": "El game-panel y los decision-btn mantienen la estética general: fondo bg-card, bordes con color-border (dorado 25% opacidad), border-radius xl, hover con translateY(-2px). Los indicator-badges usan colores funcionales diferenciados (dorado para poder, azul para lealtad, dorado-acento para imagen).",
+          "inconsistencia_menor": "El CSS define .indicator-badge.reputation .value con color: var(--color-dorado) pero también para .indicator-badge.power se usa #FFD700 (dorado saturado diferente al dorado del sistema). La inconsistencia es sutil pero rompe el sistema."
+        },
+        "secciones_alternadas": {
+          "evaluacion": "CORRECTA",
+          "descripcion": "Las secciones alternan entre .section-odd (radial-gradient desde top con tono más oscuro #12100E) y .section-even (radial-gradient desde bottom con #1A1715). Crea ritmo visual sin ser monótono.",
+          "evidencia": "CSS: .section-odd { background: radial-gradient(ellipse at top, #12100E 0%, #171513 70%); } .section-even { background: radial-gradient(ellipse at bottom, #1A1715 0%, #171513 70%); }"
+        },
+        "problemas_identidad": [
+          "Bootstrap CDN carga con su propio CSS que puede sobreescribir variables locales. Se aplica !important en .navbar background para forzar el color correcto.",
+          "Sin imágenes propias del proyecto, la identidad visual está incompleta — el hero usa imagen de Unsplash sin relación directa con The Godfather."
+        ]
+      }
+    },
+
+    "apartado_5_navegacion": {
+      "titulo": "Navegación y Experiencia de Usuario",
+      "puntuacion": 5.5,
+      "navbar": {
+        "estructura": "Navbar Bootstrap fixed-top con collapse para móvil. 7 enlaces: Inicio, La Película, Personajes, Archivo Narrativo, El Juego, Legado, Comunidad.",
+        "funcional_en_html": ["#home", "#movie", "#characters", "#game"],
+        "rotos_o_ausentes": ["#archive — sección no implementada en HTML", "#legacy — sección no implementada en HTML", "#community — sección no implementada en HTML"],
+        "evaluacion": "La navegación está parcialmente implementada. 4 de 7 secciones tienen destino real. Hacer clic en Archivo Narrativo, Legado o Comunidad no navega a ningún lugar visible.",
+        "aria_toggler": "El botón navbar-toggler tiene aria-controls, aria-expanded y aria-label correctos — bien implementado para accesibilidad móvil."
+      },
+      "flujo_del_juego": {
+        "descripcion": "El flujo del juego tiene problemas de UX importantes detectados en el código:",
+        "problemas": [
+          {
+            "problema": "Avance automático sin feedback de decisión",
+            "descripcion": "En applyDecision(), tras aplicar una decisión se llama a renderScenario() inmediatamente — esto REEMPLAZA el texto de la decisión tomada con el MISMO escenario. El usuario no ve ninguna confirmación de qué decidió ni el texto de 'outcome' de la decisión. La función renderScenario() simplemente muestra el escenario de nuevo con los mismos botones.",
+            "evidencia": "main.ts applyDecision(): al final llama this.renderScenario(currentScenarioIndex) y this.updateIndicators(). Sin mostrar el outcome ni bloquear los botones de decisión."
+          },
+          {
+            "problema": "Botón 'Siguiente escenario' redundante y confuso",
+            "descripcion": "El flujo actual tiene dos acciones separadas: (1) el usuario hace clic en un botón de decisión y (2) el usuario hace clic en 'Siguiente escenario'. En applyDecision() se llama a renderScenario() directamente, así que al hacer clic en decisión el escenario se actualiza, pero el botón 'Siguiente' también hace lo mismo. Hay doble avance posible.",
+            "evidencia": "main.ts bindGame(): dom.nextBtn tiene listener que llama this.showNextScenario(). applyDecision(): llama this.renderScenario(currentScenarioIndex) directamente. Dos paths de código que avanzan el estado del juego."
+          },
+          {
+            "problema": "isPlaying mal manejado — se pone a false prematuramente",
+            "descripcion": "En applyDecision(), cuando currentScenarioIndex === SCENARIO_COUNT - 1, se hace isPlaying = false, pero el botón nextBtn pasa a 'Finalizar partida'. Si el usuario hace clic en una decisión de nuevo (los botones siguen activos), applyDecision() se vuelve a llamar pero isPlaying ya es false, lo que crea inconsistencia de estado.",
+            "evidencia": "main.ts applyDecision(): if (currentScenarioIndex === Game.SCENARIO_COUNT - 1) { dom.nextBtn.textContent = 'Finalizar partida'; isPlaying = false; }"
+          }
+        ],
+        "positivo": "El contador de escenario (Escenario X de 6) se actualiza correctamente. Los indicadores se actualizan tras cada decisión. La estructura visual del game-panel es clara."
+      },
+      "modal_personajes": {
+        "descripcion": "El modal de personaje (#characterModal) está en el HTML con Bootstrap correctamente configurado. Tiene aria-hidden='true' en el modal-dialog.",
+        "problema_accesibilidad": "El div.modal NO tiene aria-labelledby apuntando al modal-title para vincular el título accesible con el contenedor modal. Bootstrap requiere aria-labelledby en el .modal para WCAG 2.1.",
+        "evidencia": "index.html: <div class='modal fade' id='characterModal' tabindex='-1' aria-hidden='true'> — falta aria-labelledby='characterModalTitle'."
+      },
+      "scroll_behavior": {
+        "descripcion": "html { scroll-behavior: smooth } está definido en CSS. Los enlaces internos (#section) usarán scroll suave en navegadores que lo soporten.",
+        "evaluacion": "Correcto — aunque la media query prefers-reduced-motion desactiva animaciones, no desactiva scroll-behavior ya que es una propiedad de layout, no una animación CSS per se. Idealmente debería incluir scroll-behavior: auto en la media query reduced-motion."
+      }
+    },
+
+    "apartado_6_accesibilidad": {
+      "titulo": "Accesibilidad WCAG 2.1 AA",
+      "puntuacion": 5.2,
+      "cumple_criterios": [
+        {
+          "criterio": "1.3.1 Info and Relationships (Nivel A)",
+          "estado": "CUMPLE PARCIALMENTE",
+          "descripcion": "HTML semántico: navbar con <nav>, secciones con <section>, headings jerarquizados (h1 en hero, h2 en secciones, h3 en cards). El modal usa roles Bootstrap correctos."
+        },
+        {
+          "criterio": "1.4.4 Resize Text (Nivel AA)",
+          "estado": "CUMPLE",
+          "descripcion": "El CSS usa clamp() para el hero-title (clamp(3rem, 8vw, 6rem)) y clamp para section-title (clamp(2rem, 4vw, 3rem)). Los tamaños de fuente base son relativos (rem, em) no absolutos (px)."
+        },
+        {
+          "criterio": "2.1.1 Keyboard (Nivel A)",
+          "estado": "CUMPLE PARCIALMENTE",
+          "descripcion": "Los botones de decisión del juego son elementos <button> nativos, por lo que son accesibles por teclado por defecto. La navbar Bootstrap es accesible por teclado. Los decision-btn generados en main.ts son <button> nativos.",
+          "problema": "El juego no tiene indicadores visuales de focus claramente definidos en CSS para los .decision-btn. No se detecta :focus-visible styling específico para los botones del juego."
+        },
+        {
+          "criterio": "2.3.1 Three Flashes (Nivel A)",
+          "estado": "CUMPLE",
+          "descripcion": "No hay animaciones que flaheen más de 3 veces por segundo en el código revisado."
+        },
+        {
+          "criterio": "2.4.1 Bypass Blocks (Nivel A)",
+          "estado": "NO CUMPLE",
+          "descripcion": "No hay skip-link ('Ir al contenido principal') implementado en el HTML. Un usuario de lector de pantalla debe navegar por toda la navbar en cada carga de página.",
+          "corrección": "Agregar <a href='#main-content' class='visually-hidden-focusable'>Ir al contenido</a> como primer elemento del body."
+        },
+        {
+          "criterio": "2.4.2 Page Titled (Nivel A)",
+          "estado": "CUMPLE",
+          "descripcion": "<title>THE GODFATHER — THE CORLEONE ARCHIVE</title> presente y descriptivo."
+        },
+        {
+          "criterio": "2.4.6 Headings and Labels (Nivel AA)",
+          "estado": "CUMPLE PARCIALMENTE",
+          "descripcion": "Las secciones tienen headings apropiados. Problema: hay dos elementos <h2> consecutivos en cada sección: uno para .section-tagline y otro para .section-title. El h2 de tagline ('La Película', 'Personajes', etc.) y el h2 de título ('The Godfather (1972)', 'Personajes Principales') duplican el nivel.",
+          "evidencia": "index.html sección movie: <h2 class='section-tagline'>La Película</h2> seguido de <h2 class='section-title'>The Godfather (1972)</h2>. Semánticamente el tagline debería ser <p> o <span> decorativo, no un heading.",
+          "corrección": "Cambiar .section-tagline de <h2> a <p class='section-tagline'> o <span> con role presentacional."
+        },
+        {
+          "criterio": "3.1.1 Language of Page (Nivel A)",
+          "estado": "CUMPLE",
+          "descripcion": "<html lang='es'> correctamente declarado."
+        },
+        {
+          "criterio": "4.1.2 Name, Role, Value (Nivel A)",
+          "estado": "CUMPLE PARCIALMENTE",
+          "descripcion": "El navbar-toggler tiene aria-label, aria-controls y aria-expanded correctos. El modal Bootstrap tiene tabindex='-1'. PROBLEMA: el #characterModal tiene aria-hidden='true' pero no aria-labelledby. Los decision-btn generados dinámicamente en JS no tienen aria-label descriptivo — solo tienen spans con clases, pero no aria-labels explícitos para describir la acción.",
+          "evidencia_problema_1": "index.html: <div class='modal fade' id='characterModal' tabindex='-1' aria-hidden='true'> — falta aria-labelledby='characterModalTitle'.",
+          "evidencia_problema_2": "main.ts renderScenario(): btn.innerHTML contiene spans con clases decision-label, decision-text, decision-outcome pero el botón en sí no tiene un aria-label que describa la acción completa para lectores de pantalla."
+        }
+      ],
+      "falla_contraste_potencial": {
+        "descripcion": "El color --color-text-muted (#79736B) sobre fondo --color-bg-card (#1A1715) puede no cumplir el ratio de contraste 4.5:1 requerido para texto normal (WCAG 2.1 AA 1.4.3). Sin herramienta de medición en runtime no se puede verificar exactamente, pero la diferencia entre un gris piedra medio (#79736B) y un negro casi puro (#1A1715) es visualmente riesgosa para texto pequeño.",
+        "uso_frecuente": ".card-text, .card-subtitle, .section-lead, nav-link en estado normal, .form-label, .indicator-badge color base",
+        "recomendacion": "Verificar con herramienta como WebAIM Contrast Checker. Si falla, clarificar el muted color a #9A948D aproximadamente para alcanzar ratio 4.5:1."
+      },
+      "reduced_motion": {
+        "descripcion": "POSITIVO: @media (prefers-reduced-motion: reduce) está implementado correctamente al final del CSS, desactivando todas las transiciones y animaciones con !important.",
+        "evidencia": "CSS: @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }"
+      }
+    },
+
+    "apartado_7_rendimiento": {
+      "titulo": "Análisis de Rendimiento y Optimización",
+      "puntuacion": 5.8,
+      "recursos_criticos_bloqueantes": [
+        {
+          "recurso": "Bootstrap CSS — CDN",
+          "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+          "impacto": "Recurso CSS bloqueante del render. No tiene preload explícito en el HTML.",
+          "tamanio_estimado": "~30KB gzip",
+          "evaluacion": "El enfoque CDN es válido para proyectos educativos pero introduce dependencia de red. Sin SRI (Subresource Integrity) hash, tampoco hay verificación de integridad."
+        },
+        {
+          "recurso": "Bootstrap Icons CSS — CDN",
+          "url": "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
+          "impacto": "Segundo recurso CSS bloqueante del render. Carga el font file de iconos completo (~200KB).",
+          "evaluacion": "Podría optimizarse usando solo los iconos necesarios con un subset SVG o sprite."
+        },
+        {
+          "recurso": "Google Fonts — Cormorant Garamond + Inter",
+          "url": "https://fonts.googleapis.com/...",
+          "impacto": "Cargado asincrónamente con onload trick — NO bloqueante. El FOUT (Flash of Unstyled Text) puede ocurrir en primera carga.",
+          "evaluacion": "BIEN implementado — la técnica de preload asíncrono es correcta. Fallback a Playfair Display y Source Sans Pro aunque esas fuentes tampoco están disponibles localmente."
+        },
+        {
+          "recurso": "Bootstrap JS — CDN",
+          "url": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js",
+          "impacto": "Script cargado al final del body — no bloqueante. Correcto.",
+          "tamanio_estimado": "~45KB gzip"
+        },
+        {
+          "recurso": "Imagen hero — Unsplash externo",
+          "url": "https://images.unsplash.com/photo-1519389950473-47fb026b31c0?w=800&q=80",
+          "impacto": "Imagen externa, request adicional a dominio de terceros, sin control de cache. La imagen tiene opacity: 0.15 y pointer-events: none — es puramente decorativa.",
+          "evaluacion": "Riesgo bajo de rendimiento (opacity baja, decorativa) pero sí añade una solicitud de red adicional. Riesgo mayor: imagen puede desaparecer o cambiar."
+        }
+      ],
+      "bundle_produccion": {
+        "configuracion": "vite.config.ts define manualChunks: { bootstrap: ['bootstrap'], supabase: ['@supabase/supabase-js'], game: ['src/game/index.ts'] }",
+        "problema_critico": "El chunk 'supabase' incluirá @supabase/supabase-js (~200KB+) en el bundle de producción aunque no haya código que lo use. Esto es desperdicio puro de bytes.",
+        "chunk_game": "El chunk 'game' (src/game/index.ts) es correcto — separa la lógica del motor del bundle principal.",
+        "chunk_bootstrap": "El chunk 'bootstrap' de vite.config.ts split el módulo npm de bootstrap, pero el HTML carga Bootstrap desde CDN. Hay redundancia — si Bootstrap viene por CDN, no debería estar en dependencies npm para el bundle."
+      },
+      "sin_lazy_loading": {
+        "descripcion": "No se detecta lazy loading de imágenes (loading='lazy' en <img>) en el HTML. La imagen hero no tiene este atributo.",
+        "impacto": "La imagen del hero se carga inmediatamente. Bajo impacto dado que es solo una imagen.",
+        "evidencia": "index.html: <img src='https://images.unsplash.com/...' alt='Cine clásico' class='hero-image'> — sin atributo loading."
+      },
+      "optimizaciones_correctas": [
+        "CSS variables custom properties — zero overhead en runtime",
+        "SVG inline para grain texture — sin request adicional",
+        "Module type='module' en script src — carga diferida automática con ESM",
+        "Vite code splitting con manualChunks — correcto en concepto aunque el chunk de supabase es innecesario",
+        "esbuild target es2020 — transpilación mínima para navegadores modernos",
+        "optimizeDeps.include: ['bootstrap', 'bootstrap-icons'] — pre-bundling correcto para Vite dev"
+      ]
+    },
+
+    "apartado_8_puntuacion_final": {
+      "titulo": "Puntuación Final y Veredicto",
+      "puntuacion_global": 6.4,
+      "escala": "0-10",
+      "metodologia_puntuacion": "Promedio ponderado de las 7 dimensiones evaluadas, con pesos según impacto en la calidad final del producto académico y técnico.",
+      "puntuaciones_por_dimension": [
+        { "dimension": "1. Visión General / Completitud", "peso": 0.20, "puntuacion": 5.5, "ponderado": 1.10 },
+        { "dimension": "2. Fortalezas / Calidad Técnica Base", "peso": 0.20, "puntuacion": 7.5, "ponderado": 1.50 },
+        { "dimension": "3. Bugs y Deuda Técnica", "peso": 0.15, "puntuacion": 5.0, "ponderado": 0.75 },
+        { "dimension": "4. Consistencia de Identidad Visual", "peso": 0.15, "puntuacion": 7.8, "ponderado": 1.17 },
+        { "dimension": "5. Navegación y UX", "peso": 0.10, "puntuacion": 5.5, "ponderado": 0.55 },
+        { "dimension": "6. Accesibilidad WCAG 2.1 AA", "peso": 0.10, "puntuacion": 5.2, "ponderado": 0.52 },
+        { "dimension": "7. Rendimiento y Optimización", "peso": 0.10, "puntuacion": 5.8, "ponderado": 0.58 }
+      ],
+      "puntuacion_calculada": 6.17,
+      "puntuacion_final_redondeada": 6.4,
+      "ajuste_editorial": "+0.2 por la documentación técnica excepcional (GAME_DESIGN_DOCUMENT.md, V2_IMPLEMENTATION_PLAN.md) y la arquitectura de motor de juego bien diseñada.",
+      "veredicto": "PROYECTO EN DESARROLLO — FUNDAMENTOS SÓLIDOS, IMPLEMENTACIÓN INCOMPLETA",
+      "resumen_ejecutivo": "The Godfather V2.0 demuestra un nivel técnico superior en lo que está implementado: el motor de juego TypeScript es arquitectónicamente correcto, bien tipado y con cobertura de tests exhaustiva. El sistema de diseño CSS es coherente y la paleta editorial es sofisticada. Sin embargo, el proyecto está claramente incompleto para una entrega final: 3 de 7 secciones no tienen HTML, las imágenes del proyecto no existen (directorio vacío), hay un bug crítico en la lógica de persistencia del mejor score, y la interfaz del juego tiene problemas de UX que hacen confuso el flujo de decisiones. Para alcanzar una calificación de 8.5+, se requiere completar las secciones faltantes, corregir los 4 bugs identificados, agregar imágenes locales y pasar la checklist WCAG 2.1 AA completa.",
+      "para_alcanzar_9_o_mas": [
+        "Implementar secciones #archive, #legacy, #community en HTML",
+        "Corregir bug de best score en finishGame() — condición incorrecta",
+        "Unificar interfaz GameState (duplicada en main.ts y types.ts)",
+        "Agregar imágenes locales — al menos favicon y hero",
+        "Implementar el character-grid con datos de personajes reales",
+        "Agregar skip-link para WCAG 2.1 AA 2.4.1",
+        "Corregir aria-labelledby en modal de personajes",
+        "Agregar dos h2 consecutivos → cambiar .section-tagline a <p>",
+        "Mover @supabase/supabase-js a devDependencies o implementar la integración",
+        "Mejorar el flujo de UX del juego: mostrar outcome de decisión antes de avanzar"
+      ],
+      "calificacion_letra": "C+",
+      "estado_para_evidencia_academica": "REQUIERE COMPLETAR — El motor del juego y la documentación técnica son suficientemente robustos para demostrar competencia en programación de software. La entrega visual e interactiva está incompleta."
+    }
+  }
+}

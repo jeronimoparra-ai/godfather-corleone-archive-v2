@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GODFATHER — THE CORLEONE ARCHIVE</title>
+  <meta name="description" content="Archivo cinematográfico digital interactivo de The Godfather (1972) — El Consejo de la Familia">
+  <meta name="author" content="SENA Aprendiz — Técnico en Programación de Software (Código 233104)">
+  <meta name="keywords" content="The Godfather, El Padrino, Bootstrap 5.3, SENA, Evidence 21, película, videojuego, cine">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Estilos V2 -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+
+  <!-- Preload fuentes V2 -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="THE GODFATHER — THE CORLEONE ARCHIVE">
+  <meta property="og:description" content="Archivo cinematográfico digital interactivo">
+  <meta property="og:type" content="website">
+
+  <meta name="theme-color" content="#171513">
+  <meta name="msapplication-TileColor" content="#171513">
+</head>
+<body>
+  <!-- Navegación -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <i class="bi bi-film me-2"></i>THE GODFATHER
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navNav" aria-controls="navNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#movie">La Película</a></li>
+          <li class="nav-item"><a class="nav-link" href="#characters">Personajes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#archive">Archivo Narrativo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#game">El Juego</a></li>
+          <li class="nav-item"><a class="nav-link" href="#legacy">Legado</a></li>
+          <li class="nav-item"><a class="nav-link" href="#community">Comunidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center hero-content">
+          <h1 class="display-1 fw-bold mb-4 hero-title">
+            <span class="hero-accent">THE GODFATHER</span>
+            <br />
+            <span class="h2 text-secondary">THE CORLEONE ARCHIVE</span>
+          </h1>
+          <p class="lead text-light mb-4">
+            Un archivo cinematográfico digital interactivo dedicado a la película clásica de Francis Ford Coppola.
+            Explora historia, personajes, legado y un videojuego de decisiones.
+          </p>
+          <p class="text-muted small mb-4">
+            <em>«El único en esta vida que realmente importa es tu familia.»</em><br />
+            <small class="text-gold">— Don Vito Corleone</small>
+          </p>
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="#movie" class="btn btn-primary btn-lg px-4 py-3">
+              <i class="bi bi-play-circle-fill me-2"></i>Explorar la Película
+            </a>
+            <a href="#game" class="btn btn-outline-light btn-lg px-4 py-3">
+              <i class="bi bi-gamepad-fill me-2"></i>Jugar El Consejo de la Familia
+            </a>
+          </div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1519389950473-47fb026b31c0?w=800&q=80" alt="Cine clásico" class="hero-image">
+    </div>
+  </section>
+
+  <!-- La Película -->
+  <section id="movie" class="section section-odd">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">La Película</h2>
+          <h2 class="section-title">The Godfather (1972)</h2>
+          <p class="section-lead">Una historia épica de la familia Corleone, liderada por el patriarca Don Vito, que lucha por mantener su imperio en el mundo del crimen organizado mientras los Estados Unidos cambian radicalmente.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title">Información Cinematográfica</h3>
+              <div class="row g-3">
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Título:</strong> <span class="text-white">The Godfather (1972)</span></p></div>
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Director:</strong> <span class="text-white">Francis Ford Coppola</span></p></div>
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Duración:</strong> <span class="text-white">175 minutos</span></p></div>
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Género:</strong> <span class="text-white">Crimen, Drama, Historia</span></p></div>
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Compañía:</strong> <span class="text-white">Paramount Pictures</span></p></div>
+                <div class="col-sm-6"><p class="card-text"><strong class="text-light">Cinematografía:</strong> <span class="text-white">Gordon Willis</span></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="card-title">Sinopsis</h3>
+              <p class="card-text">
+                La familia Corleone, líder en el crimen organizado de Nueva York, busca mantener su dominio en un mundo que está cambiando. Don Vito Corleone, el patriarca, lucha por proteger a su familia mientras sus hijos experimentan el poder y la corrupción.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personajes -->
+  <section id="characters" class="section section-even">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">Personajes</h2>
+          <h2 class="section-title">Personajes Principales</h2>
+          <p class="section-lead">Siete personajes clave de la saga The Godfather, con información detallada y modales interactivos.</p>
+        </div>
+      </div>
+      <div class="row g-4" id="character-grid">
+        <!-- Las tarjetas de personajes se renderizan con JavaScript -->
+      </div>
+      <!-- Modal de personaje -->
+      <div class="modal fade" id="characterModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="characterModalTitle">Personaje</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <img id="characterImage" src="" class="img-fluid rounded" alt="Personaje">
+                </div>
+                <div class="col-md-8">
+                  <h6>Actor: <span id="characterActor"></span></h6>
+                  <p><strong>Rol:</strong> <span id="characterRole"></span></p>
+                  <p><strong>Edad:</strong> <span id="characterAge"></span></p>
+                  <p><strong>Descripción:</strong> <span id="characterDescription"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El Juego -->
+  <section id="game" class="section section-odd">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">El Juego</h2>
+          <h2 class="section-title">El Consejo de la Familia</h2>
+          <p class="section-lead">Un videojuego narrativo donde tus decisiones cambian el resultado de la partida. Evalúa poder, lealtad e imagen para definir tu legado.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="game-panel">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="game-panel-title mb-0">Partida en curso</h5>
+              <span class="badge bg-light text-dark" id="scenario-counter">Escenario 1 de 6</span>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-4">
+                <div class="indicator-badge power" id="indicator-power">
+                  <i class="bi bi-shield-exclamation-fill"></i>
+                  <span>Poder: <span class="value" id="power-value">50</span></span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="indicator-badge loyalty" id="indicator-loyalty">
+                  <i class="bi bi-heart-fill"></i>
+                  <span>Lealtad: <span class="value" id="loyalty-value">50</span></span>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="indicator-badge reputation" id="indicator-reputation">
+                  <i class="bi bi-eye-fill"></i>
+                  <span>Imagen: <span class="value" id="reputation-value">50</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="scenario-text" id="scenario-text"></div>
+            <div class="decision-buttons" id="decision-buttons"></div>
+            <div class="text-center mt-4">
+              <button id="next-scenario" class="btn btn-outline-gold" disabled>
+                <i class="bi bi-arrow-right"></i> Siguiente escenario
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archivo Narrativo -->
+  <section id="archive" class="section section-even">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">Archivo Narrativo</h2>
+          <h2 class="section-title">El Legado de Corleone</h2>
+          <p class="section-lead">Una línea del tiempo narrativa que sigue el ascenso y el descenso de la familia Corleone entre 1945 y 1955, con documentos, fotos y testimonios de los personajes.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Leyenda de los Corleone</h3>
+              <p class="card-text">De Don Vito, el patriarca inquebrantable, a Michael, el que convirtió la familia en un imperio. Creado a partir del archivo cinematográfico de The Godfather (1972).</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Cronología del poder</h3>
+              <p class="card-text">De la boda de 1945 hasta el asesinato del payaso en 1955. Un recorrido por las decisiones que definieron el destino de la familia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- El Legado -->
+  <section id="legacy" class="section section-odd">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">El Legado</h2>
+          <h2 class="section-title">Historias que sobreviven</h2>
+          <p class="section-lead">Los personajes de The Godfather dejaron huella en la cultura popular. Explora cómo cada uno interpretó su papel y qué significado tuvo para el mundo.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Marlon Brando — Don Vito</h3>
+              <p class="card-text">El patriarca cuyo silencio habla más que las palabras.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Al Pacino — Michael</h3>
+              <p class="card-text">Del querido al que ya no pertenece, pero que lo cambió todo.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">James Caan — Sonny</h3>
+              <p class="card-text">La sangre caliente que quemó primero.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Richard Castellano — Clemenza</h3>
+              <p class="card-text">El honor del corazón, disfrazado de lealtad.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Diane Keaton — Kay</h3>
+              <p class="card-text">La tentación de la normalidad en medio del crimen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Emily Ross — Connie</h3>
+              <p class="card-text">La familia que lo reclamó, en silencio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comunidad -->
+  <section id="community" class="section section-even">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-tagline">Comunidad</h2>
+          <h2 class="section-title">Tu espacio de visitantes</h2>
+          <p class="section-lead">Un archivo abierto. Comparte tus interpretaciones, opiniones y el legado que la familia Corleone ha dejado en ti.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Foro de visitantes</h3>
+              <p class="card-text">Comparte tus reflexiones sobre la película, los personajes y el legado de la familia Corleone. Tu opinión forma parte del archivo.</p>
+              <form id="reviews-form" class="mt-3">
+                <div class="mb-3">
+                  <label for="review-name" class="form-label">Tu nombre</label>
+                  <input type="text" class="form-control" id="review-name" placeholder="Escribe tu nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="review-comment" class="form-label">Comentario</label>
+                  <textarea class="form-control" id="review-comment" rows="4" placeholder="Escribe tu opinión sobre la película o el videojuego"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold">Enviar comentario</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card h-100 border-0">
+            <div class="card-body">
+              <h3 class="card-title">Stats de la comunidad</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between"><span class="text-muted">Visitantes</span><span id="visitor-count">0</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span class="text-muted">Partidas jugadas</span><span id="games-played">0</span></li>
+                <li class="list-group-item d-flex justify-content-between"><span class="text-muted">Mejor score</span><span id="best-score">0</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h5 class="text-gold mb-3">THE GODFATHER — THE CORLEONE ARCHIVE</h5>
+          <p class="text-muted small">Archivo cinematográfico digital interactivo dedicado a The Godfather (1972).</p>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="text-gold mb-3">Enlaces</h5>
+          <ul class="list-unstyled">
+            <li><a href="#home" class="footer-link">Inicio</a></li>
+            <li><a href="#movie" class="footer-link">La Película</a></li>
+            <li><a href="#characters" class="footer-link">Personajes</a></li>
+            <li><a href="#game" class="footer-link">Jugar</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="text-gold mb-3">Contacto</h5>
+          <ul class="list-unstyled">
+            <li class="text-muted small mb-2"><i class="bi bi-envelope-fill me-2"></i>desarrollador@sena.edu.co</li>
+            <li class="text-muted small"><i class="bi bi-geo-fill me-2"></i>SENA — Centro de Formación</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-gold my-4">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="text-muted small mb-0">
+            © 2026 THE GODFATHER — THE CORLEONE ARCHIVE | SENA Evidence 21 | Bootstrap 5.3 + JS Moderno
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Motor del juego (modo producción) -->
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

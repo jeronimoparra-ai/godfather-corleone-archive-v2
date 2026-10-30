@@ -1,0 +1,43 @@
+{
+  "name": "the-godfather-corleone-archive",
+  "version": "2.0.0",
+  "description": "THE GODFATHER — THE CORLEONE ARCHIVE — Cinematic editorial archive, interactive narrative and decision game. Bootstrap 5.3 + Vite.",
+  "author": "SENA Aprendiz — Programación de Software",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "check:requirements": "node scripts/check-requirements.js"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.3",
+    "bootstrap-icons": "1.11.3"
+  },
+  "devDependencies": {
+    "supabase": "2.15.8",
+    "@supabase/supabase-js": "2.41.0",
+    "vite": "5.4.10",
+    "typescript": "5.6.2",
+    "@types/node": "22.8.1",
+    "eslint": "8.57.1",
+    "prettier": "3.3.3",
+    "vitest": "2.1.6"
+  },
+  "keywords": [
+    "sena",
+    "evidencia-21",
+    "bootstrap",
+    "the-godfather",
+    "corleone-archive",
+    "cinema",
+    "interactive-game"
+  ],
+  "engines": {
+    "node": ">= 18.0.0"
+  }
+}

@@ -1,0 +1,511 @@
+/* =============================================
+   THE GODFATHER — THE CORLEONE ARCHIVE (V2)
+   Cinético Editorial — CSS de identidad visual
+   Paleta: Marfil / Negro Tinta / Borgoña / Dorado
+   ============================================= */
+
+:root {
+  /* Paleta cromática */
+  --color-marfil: #F1EBDD;
+  --color-negro-tinta: #171513;
+  --color-borgoña: #4B121B;
+  --color-dorado: #A47A48;
+  --color-gris-piedra: #79736B;
+  --color-blanco-calido: #FAF8F2;
+
+  /* Derivados */
+  --color-bg: #171513;
+  --color-bg-card: #1A1715;
+  --color-bg-elevated: #23201C;
+  --color-text: #F1EBDD;
+  --color-text-muted: #79736B;
+  --color-text-gold: #A47A48;
+  --color-border: rgba(164, 122, 72, 0.25);
+  --color-accent: #A47A48;
+
+  /* Tipografía */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-body: 'Inter', 'Source Sans Pro', sans-serif;
+
+  /* Espaciado */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-xxl: 8rem;
+
+  /* Bordes */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Oscurecimiento de fondo (grain visual) */
+  --grain-opacity: 0.04;
+
+  /* Transiciones */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 600ms ease;
+
+  /* Formas */
+  --shape-radius: var(--radius-xl);
+}
+
+/* =============================================
+   RESET Y BOTÓN BASE
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Texto primordial — Cormorant Garamond */
+.display-text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Tanque de fondo — grain cinematográfico */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='none' stroke='%23F1EBDD' stroke-opacity='0.05' stroke-width='1' d='M 20 20 L 40 30 L 60 45 L 80 50 L 100 80'/%3E%3Cpath fill='none' stroke='%23F1EBDD' stroke-opacity='0.04' stroke-width='1' d='M 10 90 L 30 70 L 50 55 L 90 60'/%3E%3Cpath fill='none' stroke='%23F1EBDD' stroke-opacity='0.03' stroke-width='1' d='M 80 20 L 100 40 L 110 70'/%3E%3Crect x='0' y='0' width='120' height='120' fill='none'/%3E%3C/svg%3E");
+  opacity: var(--grain-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+  background: rgba(23, 21, 19, 0.92) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 0;
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--color-text) !important;
+  letter-spacing: 0.04em;
+}
+
+.navbar-brand i {
+  color: var(--color-dorado);
+}
+
+.nav-link {
+  color: var(--color-text-muted) !important;
+  font-size: 0.95rem;
+  font-weight: 400;
+  position: relative;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-dorado);
+  transition: width var(--transition-normal);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text) !important;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 60%;
+}
+
+/* Botones de navegación en móvil */
+.navbar-toggler {
+  border-color: var(--color-border);
+}
+
+.navbar-toggler-icon {
+  background: var(--color-text);
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xxl) var(--space-lg);
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.hero-accent {
+  color: var(--color-dorado);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: clamp(300px, 40vw, 500px);
+  height: auto;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   SECCIONES GENERALES
+   ============================================= */
+.section {
+  padding: var(--space-xxl) var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.section-odd {
+  background: radial-gradient(ellipse at top, #12100E 0%, #171513 70%);
+}
+
+.section-even {
+  background: radial-gradient(ellipse at bottom, #1A1715 0%, #171513 70%);
+}
+
+.section-tagline {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-dorado);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin-bottom: var(--space-lg);
+}
+
+/* =============================================
+   TARJETAS
+   ============================================= */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(164, 122, 72, 0.2);
+}
+
+.card-body {
+  padding: var(--space-lg);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+/* Badge de oro */
+.badge-gold {
+  background: rgba(164, 122, 72, 0.2);
+  color: var(--color-dorado);
+  border: 1px solid var(--color-border);
+}
+
+/* =============================================
+   FORMULARIOS
+   ============================================= */
+.form-control,
+.form-select {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-dorado);
+  box-shadow: 0 0 0 3px rgba(164, 122, 72, 0.2);
+}
+
+.form-label {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* =============================================
+   MODALES
+   ============================================= */
+.modal-content {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-body {
+  color: var(--color-text-muted);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--color-border);
+}
+
+/* =============================================
+   REPRODUCTOR AMBIENTAL
+   ============================================= */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.audio-controls .btn {
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.audio-controls .btn:hover,
+.audio-controls .btn:focus {
+  border-color: var(--color-dorado);
+  color: var(--color-text);
+}
+
+.audio-controls .btn:focus {
+  box-shadow: 0 0 0 3px rgba(164, 122, 72, 0.2);
+}
+
+/* =============================================
+   JUEGO
+   ============================================= */
+.game-panel {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+
+.game-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.indicator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.indicator-badge .value {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.indicator-badge.power .value { color: #FFD700; }
+.indicator-badge.loyalty .value { color: #5DADE2; }
+.indicator-badge.reputation .value { color: #A47A48; }
+
+.scenario-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+}
+
+.decision-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.decision-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-normal);
+}
+
+.decision-btn:hover {
+  border-color: var(--color-dorado);
+  background: var(--color-bg);
+  transform: translateY(-2px);
+}
+
+.decision-btn .decision-label {
+  font-size: 0.8rem;
+  color: var(--color-dorado);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.decision-btn .decision-text {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.decision-btn .decision-outcome {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-lg) 0;
+}
+
+/* Utility: gold border for editorial horizontal rules */
+.border-gold {
+  border-color: var(--color-dorado);
+}
+
+.footer-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-dorado);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .hero {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .hero-image {
+    width: 100%;
+    position: relative;
+    bottom: auto;
+    right: auto;
+  }
+}
+
+/* =============================================
+   REDUCIDO MOVIMIENTO (WCAG)
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
